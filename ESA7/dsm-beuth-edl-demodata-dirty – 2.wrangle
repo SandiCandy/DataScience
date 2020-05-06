@@ -1,0 +1,9 @@
+drop col: id action: Drop
+drop col: full_name action: Drop
+deduplicate
+filter type: missing missing: last_name action: Delete
+settype col: age type: Integer
+settype col: age type: Integer
+set col: age value: IF((-80 <= age) && (age < -70), NULL(), $col)
+set col: age value: IFMISMATCHED($col, ['Integer'], NULL())
+replacemissing col: age,first_name,last_name,email,gender with: null text: ''
